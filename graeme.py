@@ -23,6 +23,7 @@ def helloWorld():
     print("hello people")
 
     value = "testy"
+    print("hello other people")
 
     return value
 

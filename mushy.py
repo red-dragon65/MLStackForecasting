@@ -26,8 +26,10 @@ pd.set_option('display.width', None)
 '''
 Creates new features to find the single best stock.
 '''
-def findBestStock(nasdaq_df, nyse_df, spac_df, allDf):
+def findBestStock(nasdaq_df):
 
+    # Use this to get training and test data
+    #X_train, X_test, y_train, y_test = train_test_split(X_var, y_var, test_size=0.2, random_state=0)
 
     '''
     # Create new feature

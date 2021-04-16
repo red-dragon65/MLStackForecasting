@@ -24,7 +24,7 @@ def runForecasting():
 
 
     # Get top stocks
-    mushyStock = m.findBestStock(nasdaq_df, nyse_df, spac_df, allDf)
+    mushyStock = m.findBestStock(nasdaq_df)
 
 
     # TODO: Remove this example

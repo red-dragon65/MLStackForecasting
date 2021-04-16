@@ -96,9 +96,9 @@ def initializeDf():
     allDfs.append(nasdaq_df)
     allDfs.append(nyse_df)
     allDfs.append(scap_df)
-    big_ass_df = pd.concat(allDfs, ignore_index=True)
+    all_stock_df = pd.concat(allDfs, ignore_index=True)
 
-    return nasdaq_df, nyse_df, scap_df, big_ass_df
+    return nasdaq_df, nyse_df, scap_df, all_stock_df
 
 
 

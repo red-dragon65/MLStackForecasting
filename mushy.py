@@ -1,33 +1,36 @@
+'''
+3580: Stock Prediction / Forecasting
+Author: Mujtaba Ashfaq
+Date: 4/15/21
+
+This class picks one stock that seems the best
+based on arbitrary values.
+'''
+
+# Used for reading in and processing data
+import DataPreProcessor as dp
+
+# Library for handling dataframes
+import pandas as pd
 
 
 
-
-def initializeDf():
-    nyse_df = [nyse_wed, nyse_thursday, df, ]
-
-    for files in directory:
-        nyse_df.append = open('files' + '.csv')
-
-    return nasdaq, nyse, spac
-
-
-
-
-
-# return df using group by for one stock
-def getStockDF(apple):
-    apple_df = big_ass_df['stock'].groupby('apple')
-    return apple_df
+# Make data readable during testing
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
 
 
 
 
 # calculate new column for all data frames
-def findFeature():
+'''
+Creates new features to find the single best stock.
+'''
+def findBestStock(nasdaq_df, nyse_df, spac_df, allDf):
 
 
-    # find best stocks
-
+    '''
+    # Create new feature
     for df in nyse_df:
         if df['open'] < df['close']
             df['newColumn'] = 1
@@ -38,7 +41,7 @@ def findFeature():
 
 
 
-
+    # Run model on new feature
     for stockName in nyse_df[0]:
 
         new_df = getStockDF(stockname)
@@ -54,12 +57,14 @@ def findFeature():
     nyse_df[0].sort(rmse)
 
     name = nyse_df[0].iloc[:1]
+    '''
 
+    name = ''
+
+
+    # Create new feature column
 
 
     return name
 
 
-
-
-print("this is a test")

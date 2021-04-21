@@ -26,7 +26,8 @@ def graemeStuff():
     nasdaq_df, nyse_df, scap_df, all_stock_df = dp.initializeDf()
     apple_stock = dp.getStockDfByName('Apple', all_stock_df)
     # print(apple_stock.head())
-    rollingAverage(apple_stock)
+    # rollingAverage(apple_stock)
+    rawBest(all_stock_df)
 
 # find the rolling average of a single stock df
 def rollingAverage(stock_df):
@@ -58,6 +59,27 @@ def rollingAverage(stock_df):
     # print(averageList)
     # print(len(averageList))
     # print(len(stock_df))
+
+def rawBest(big_df):
+    # make a set of the names of the companies
+    # field all the names into the get stock by name
+    # take the first open and the last close date to see raw total difference
+    # make a dict of the company and its overall change
+    # sort this dict
+
+    # set of all the company names
+    compNameSet = set()
+
+    # dict of the company and its overall stock diff
+    compDiff = {}
+
+    # list to hold the dicts so that it can be sorted by stock diff
+    compDiffList = []
+
+    print(dp.getStockDfByName("Eyenovia", big_df))
+    # for stock in big_df:
+    #     print(stock)
+
 
 def helloWorld():
 

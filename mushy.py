@@ -42,6 +42,8 @@ from statsmodels.tsa.holtwinters import ExponentialSmoothing
 # Used for plotting
 import matplotlib.pyplot as plt
 
+import graeme as g
+
 # Make sklearn shutup about errors
 pd.options.mode.chained_assignment = None  # default='warn'
 
@@ -184,7 +186,7 @@ def findBestStock(nasdaq_df):
         for num_components in range(len(features), 0, -1):
 
             # Skip empty dataframe
-            if len(comp_df.index) < 10:
+            if len(comp_df.index) < 25:
                 break
 
             # Skip if less than one feature
@@ -266,8 +268,12 @@ def findBestStock(nasdaq_df):
 
 
 
+    # Calculate average accuracy of stocks
+    averageAcc = nasdaq_df['ModelAccuracy'].mean()
+    averageAcc = averageAcc - (averageAcc*0.25)
 
-
+    # Get rid of 'safe' stocks
+    nasdaq_df = nasdaq_df[nasdaq_df['ModelAccuracy'] < averageAcc]
 
     # Shrink the data frame to get accuracy of each company
     bastardized_df = nasdaq_df.drop_duplicates('ModelAccuracy')
@@ -286,7 +292,7 @@ def findBestStock(nasdaq_df):
     #TODO Multithread this
 
     # Loop through top 50 stocks
-    for i in range(0, 50):
+    for i in range(0, 250):
 
         # Get data frame for company
         comp_df = nasdaq_df.loc[(nasdaq_df['Name'] == companies[i])]
@@ -389,8 +395,16 @@ def findBestStock(nasdaq_df):
 
         plt.legend(loc='best')
 
-    # Show plots
-    plt.show()
+        plt.title("Stock Price Over Time: " + s)
+        plt.xlabel("Date")
+        plt.ylabel("Price")
+
+        # Show plots
+        plt.show()
+
+        # Show advanced chart
+        g.graemeStuff(s)
+
 
 
 
@@ -404,11 +418,14 @@ def findBestStock(nasdaq_df):
 
 
 
-
-
+# Give user heads up
+print("Loading data...")
 
 # Get data frames
 nasdaq_df, nyse_df, spac_df, allDf = dp.initializeDf()
+
+# Give user heads up
+print("Starting calculations. This will take a while!")
 
 # Get top stock
 mushyStock = findBestStock(nasdaq_df)

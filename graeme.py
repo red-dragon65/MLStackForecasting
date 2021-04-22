@@ -24,16 +24,16 @@ pd.set_option('display.expand_frame_repr', False)
 # df = pd.read_csv('stocks/Nasdaq-Friday-April-20-2018.csv')
 # print(df)
 
-def graemeStuff():
+def graemeStuff(stockName):
     nasdaq_df, nyse_df, scap_df, all_stock_df = dp.initializeDf()
-    apple_stock = dp.getStockDfByName('Apple', all_stock_df)
+    comp_stock = dp.getStockDfByName(stockName, all_stock_df)
     # print(apple_stock.head())
-    rollingAverage(apple_stock)
+    rollingAverage(comp_stock, stockName)
     # rawBest(all_stock_df)
     # print(all_stock_df)
 
 # find the rolling average of a single stock df
-def rollingAverage(stock_df):
+def rollingAverage(stock_df, stockName):
     averageList = []
     low = stock_df['High']
     high = stock_df['Low']
@@ -57,7 +57,7 @@ def rollingAverage(stock_df):
 
     # plt.plot(xpoints, high, label="High")
     # plt.plot(xpoints, low, label="Low")
-    plt.title("Stock Price Over Time ")
+    plt.title("Stock Price Over Time: " + stockName)
     plt.xlabel("Date")
     plt.ylabel("Price")
     myFmt = mdates.DateFormatter('%b')
@@ -139,4 +139,4 @@ def rawBest(big_df):
 
 
 
-graemeStuff()
+#graemeStuff('Apple')

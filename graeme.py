@@ -28,6 +28,7 @@ def graemeStuff():
     # print(apple_stock.head())
     # rollingAverage(apple_stock)
     rawBest(all_stock_df)
+    # print(all_stock_df)
 
 # find the rolling average of a single stock df
 def rollingAverage(stock_df):
@@ -87,25 +88,28 @@ def rawBest(big_df):
             year_change = 0
         year_change = float(year_change)
         if year_change > 0:
-            open = stock['P/E'].iloc[0]
+            open = stock['Open'].iloc[0]
             # if open.find(",") != -1:
             #     while open.find(",") != -1:
             #         open = open.replace(",", "")
-            if open == '...':
-                open = 0
-            open = float(open)
 
-            close = stock['P/E'].iloc[-1]
+            if open == '...':
+                open = -1
+            open = float(open)
+            shares = int(10000/open)
+
+            close = stock['Close'].iloc[-1]
 
             if close == '...':
-                close = 0
+                close = -1
             # if close.find(",") != -1:
             #     while close.find(",") != -1:
             #         close = close.replace(",", "")
             close = float(close)
+            close_money = shares * close
             # print(close)
             # print(type(close))
-            diff = (close - open)
+            diff = (close_money - (open* shares))
             # print(diff)
             if diff > 1000:
                 compDiff = {"Name": name, "Diff": diff}
@@ -117,7 +121,7 @@ def rawBest(big_df):
     print(compDiffList)
     print(len(compDiffList))
     sorted_list = sorted(compDiffList, key=itemgetter('Diff'),reverse=True)
-    print("Top 3 companies based off of change in P/E")
+    print("Top 3 companies based off of change in Profit")
     for x in range(3):
         print(sorted_list[x])
     # print(compDiffList.)
@@ -126,15 +130,6 @@ def rawBest(big_df):
     # for stock in big_df:
     #     print(stock)
 
-
-def helloWorld():
-
-    print("hello people")
-
-    value = "testy"
-    print("hello other people")
-
-    return value
 
 
 # graemeStuff()

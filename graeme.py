@@ -15,6 +15,8 @@ import pandas as pd
 import DataPreProcessor as dp
 import matplotlib.pyplot as plt
 from operator import itemgetter
+import matplotlib.dates as mdates
+
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.expand_frame_repr', False)
@@ -26,8 +28,8 @@ def graemeStuff():
     nasdaq_df, nyse_df, scap_df, all_stock_df = dp.initializeDf()
     apple_stock = dp.getStockDfByName('Apple', all_stock_df)
     # print(apple_stock.head())
-    # rollingAverage(apple_stock)
-    rawBest(all_stock_df)
+    rollingAverage(apple_stock)
+    # rawBest(all_stock_df)
     # print(all_stock_df)
 
 # find the rolling average of a single stock df
@@ -55,6 +57,11 @@ def rollingAverage(stock_df):
 
     # plt.plot(xpoints, high, label="High")
     # plt.plot(xpoints, low, label="Low")
+    plt.title("Stock Price Over Time ")
+    plt.xlabel("Date")
+    plt.ylabel("Price")
+    myFmt = mdates.DateFormatter('%b')
+    plt.gca().xaxis.set_major_formatter(myFmt)
     plt.legend()
     plt.show()
     # print(averageList)
@@ -132,4 +139,4 @@ def rawBest(big_df):
 
 
 
-# graemeStuff()
+graemeStuff()

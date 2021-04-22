@@ -26,10 +26,10 @@ pd.set_option('display.expand_frame_repr', False)
 
 def graemeStuff(stockName):
     nasdaq_df, nyse_df, scap_df, all_stock_df = dp.initializeDf()
-    comp_stock = dp.getStockDfByName(stockName, all_stock_df)
+    # comp_stock = dp.getStockDfByName(stockName, all_stock_df)
     # print(apple_stock.head())
-    rollingAverage(comp_stock, stockName)
-    # rawBest(all_stock_df)
+    # rollingAverage(comp_stock, stockName)
+    rawBest(all_stock_df)
     # print(all_stock_df)
 
 # find the rolling average of a single stock df
@@ -129,8 +129,15 @@ def rawBest(big_df):
     print(len(compDiffList))
     sorted_list = sorted(compDiffList, key=itemgetter('Diff'),reverse=True)
     print("Top 3 companies based off of change in Profit")
+    top_three = []
     for x in range(3):
         print(sorted_list[x])
+        top_three.append(sorted_list[x])
+
+    # for item in sorted_list:
+    #     for key, value in item:
+    #         percent = (value/10000) * 100
+    #         print(key," ",percent, "% increase in price")
     # print(compDiffList.)
 
     # print(dp.getStockDfByName("Eyenovia", big_df))
@@ -139,4 +146,4 @@ def rawBest(big_df):
 
 
 
-#graemeStuff('Apple')
+graemeStuff('Apple')

@@ -1,4 +1,4 @@
-# MLStackForecasting
+# MLStockForecasting
 
 This is the final project for data science 3580
 
